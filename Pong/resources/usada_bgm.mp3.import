@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/usada_bgm.mp3-5b665faa099d52855d11ec6938f4afa4.mp3str"
+
+[deps]
+
+source_file="res://resources/usada_bgm.mp3"
+dest_files=[ "res://.import/usada_bgm.mp3-5b665faa099d52855d11ec6938f4afa4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

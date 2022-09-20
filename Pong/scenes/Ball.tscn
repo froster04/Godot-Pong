@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/ball.png" type="Texture" id=1]
+[ext_resource path="res://script/Ball.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Trail2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/light.png" type="Texture" id=4]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.886458 ), 1.12544, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.00546448, 0.57377 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0.859035, 0.925234, 0.11204, 1 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.1
+glow_strength = 0.72
+
+[node name="Ball" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Trail2D" parent="." instance=ExtResource( 3 )]
+width = 28.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.854902, 0.909804, 0.192157, 1 )
+gradient = SubResource( 3 )
+texture_mode = 2
+antialiased = true
+length = 25
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 100, 100, 0.09, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Glow" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Glow"]
+environment = SubResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+texture_scale = 0.8
+shadow_enabled = true
